@@ -87,6 +87,14 @@ button:hover {
         border-radius: 8px;
     }
 
+    .calculator-screen {
+        margin: 0 15px;
+    }
+
+    .calculator-buttons {
+        margin: 0 15px;
+    }
+
     button {
         height: 50px;
     }
