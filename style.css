@@ -76,3 +76,15 @@ button {
 button:hover {
     background-color: rebeccapurple;
 }
+
+@media screen and (max-width: 450px) {
+    .calculator-container {
+        width: 320px;
+        border-radius: 8px;
+    }
+
+    button {
+        height: 50px;
+    }
+
+}
