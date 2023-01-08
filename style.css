@@ -13,7 +13,7 @@ body {
 }
 
 .calculator-container {
-    height: 400px;
+    height: 500px;
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -29,14 +29,17 @@ body {
     align-items: center;
 }
 
-input{
-    display: block;
+.input{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    background-color: #fff;
     width: 100%;
     height: 60px;
-    text-align: right;
     box-sizing: border-box;
     padding: 0 15px;
     border-radius: 10px;
+    font-size: 19px;
 }
 
 .calculator-buttons {
@@ -64,12 +67,12 @@ input{
 button {
     display: inline-block;
     width: 100%;
-    height: 40px;
+    height: 50px;
     border-radius: 5px;
     box-shadow: 2px;
     border: none;
 }
 
 button:hover {
-    height: 45px;
+    background-color: rebeccapurple;
 }
