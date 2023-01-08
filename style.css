@@ -89,10 +89,12 @@ button:hover {
 
     .calculator-screen {
         margin: 0 15px;
+        margin-top: 15px;
     }
 
     .calculator-buttons {
         margin: 0 15px;
+        margin-bottom: 15px;
     }
 
     button {
