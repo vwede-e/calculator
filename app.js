@@ -1,3 +1,38 @@
+// global variables
+const calculatorValue = {value1: "", operator: "", value2: "", total: 0 };
+const input = document.querySelector(".input");
+const buttons = document.querySelectorAll("button");
+
+// event listeners
+for (let button of buttons) {
+    button.addEventListener("click", (event) => {
+        if (event.target.classList.contains("number")) {
+            handleNumbers(event);
+        }
+
+        else if (event.target.classList.contains("operator")) {
+            handleOperators(event);
+        }
+
+        else if (event.target.classList.contains("dot")) {
+            addDot();
+        }
+
+        else if (event.target.classList.contains("reset")) {
+            resetCalc();
+        }
+
+        else if (event.target.classList.contains("equal")) {
+            equals();
+        }
+
+        else {
+            del();
+        }
+    })
+}
+
+// functions
 function add(operand1, operand2) {
     return typeof +operand1 === "number" && typeof +operand2 === "number" ?
     +(operand1) + +(operand2) : "Enter two valid numbers";
@@ -38,37 +73,6 @@ function operate(operand1, operator, operand2) {
     }
 }
 
-const calculatorValue = {value1: "", operator: "", value2: "", total: 0 };
-
-const input = document.querySelector(".input");
-const buttons = document.querySelectorAll("button");
-for (let button of buttons) {
-    button.addEventListener("click", (event) => {
-        if (event.target.classList.contains("number")) {
-            handleNumbers(event);
-        }
-
-        else if (event.target.classList.contains("operator")) {
-            handleOperators(event);
-        }
-
-        else if (event.target.classList.contains("dot")) {
-            addDot();
-        }
-
-        else if (event.target.classList.contains("reset")) {
-            resetCalc();
-        }
-
-        else if (event.target.classList.contains("equal")) {
-            equals();
-        }
-
-        else {
-            del();
-        }
-    })
-}
 function addDot() {
     if (!calculatorValue.operator && !calculatorValue.value1.includes(".")) {
         calculatorValue.value1 += ".";
