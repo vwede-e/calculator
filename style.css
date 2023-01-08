@@ -79,7 +79,7 @@ button:hover {
 
 @media screen and (max-width: 450px) {
     .calculator-container {
-        width: 320px;
+        width: 350px;
         border-radius: 8px;
     }
 
