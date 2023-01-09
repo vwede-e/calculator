@@ -81,6 +81,7 @@ button:hover {
     
     body {
         height: 90vh;
+
     }
     .calculator-container {
         width: 350px;
@@ -100,5 +101,4 @@ button:hover {
     button {
         height: 50px;
     }
-
 }
