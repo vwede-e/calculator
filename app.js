@@ -5,6 +5,26 @@ const buttons = document.querySelectorAll("button");
 input.textContent = "0";
 
 // event listeners
+document.body.addEventListener("keydown", (event)=> {
+    if (event.key === "Backspace") {
+        del();
+    }
+    if (+event.key  >= 0 && +event.key <= 9) {
+        handleNumbers(event);
+    }
+    if (event.key === "+" || event.key === "-" || event.key === "/" || event.key === "*") {
+        handleOperators(event);
+    }
+    if (event.key === "Enter") {
+        equals();
+    }
+    if (event.key === ".") {
+        addDot();
+    }
+    if (event.key.toLowerCase() === "c") {
+        resetCalc();
+    }})
+    
 for (let button of buttons) {
     button.addEventListener("click", (event) => {
         if (event.target.classList.contains("number")) {
@@ -82,28 +102,30 @@ function del() {
     } }
 
 function handleNumbers(event) {
+    const eventHandler = event.target === document.body ? event.key : event.target.textContent;
     if (calculatorValue.total !== null) { //reset calculator before starting new operation
         resetCalc();    
     }
 
     if (!calculatorValue.operator) { // if operator is absent
-        calculatorValue.value1 += event.target.textContent; 
+        calculatorValue.value1 += eventHandler; 
         if (input.textContent.length == 1 && input.textContent[0] == "0") { // check if output has only 0. If true, change output to inputed number
-            input.textContent = event.target.textContent;
+            input.textContent = eventHandler;
         }
 
         else {
-        input.textContent +=  event.target.textContent; //if output has number other than 0, append the new input number to it
+        input.textContent +=  eventHandler; //if output has number other than 0, append the new input number to it
     } }
 
     else {
-        calculatorValue.value2 += event.target.textContent; // if the operator is true, append number to the second operand
-        input.textContent += event.target.textContent;
+        calculatorValue.value2 += eventHandler; // if the operator is true, append number to the second operand
+        input.textContent += eventHandler;
     } }
 
 function handleOperators(event) {
+    eventHandler = event.target === document.body ? event.key: event.target.textContent;
     if (!calculatorValue.operator) { // if there's no existing operator
-        calculatorValue.operator = event.target.textContent; 
+        calculatorValue.operator = eventHandler; 
         input.textContent += calculatorValue.operator;
     }
     else {
@@ -111,21 +133,21 @@ function handleOperators(event) {
             calculatorValue.value1 = calculatorValue.total.toString();// give total to operand1 and empty total
             calculatorValue.total = null;
             calculatorValue.value2 = "";
-            input.textContent = calculatorValue.value1 + event.target.textContent; // operator should change to new one
-            calculatorValue.operator = event.target.textContent; // new operator should reflect on output
+            input.textContent = calculatorValue.value1 + eventHandler; // operator should change to new one
+            calculatorValue.operator = eventHandler; // new operator should reflect on output
         }
 
         else if (calculatorValue.value2) { //if operator exists, total is null, and 2nd operand is not empty
             const result = equals();
             calculatorValue.value2 = ""; //if operator and 2nd operand is present and no ouput
             calculatorValue.value1 = result.toString(); //carry out the operation, give total to operand 1
-            input.textContent = calculatorValue.total + event.target.textContent; //operator should change to new one
-            calculatorValue.operator = event.target.textContent; // and should reflect on output
+            input.textContent = calculatorValue.total + eventHandler; //operator should change to new one
+            calculatorValue.operator = eventHandler; // and should reflect on output
             calculatorValue.total = null;
         }
 
         else { // if only operator and first operand is given
-            calculatorValue.operator = event.target.textContent; //  // corrects a mistakenly typed operator
+            calculatorValue.operator = eventHandler; //  // corrects a mistakenly typed operator
             input.textContent = input.textContent.slice(0, input.textContent.length-1) +  calculatorValue.operator;
         } } }
 
