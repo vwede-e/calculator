@@ -13,6 +13,7 @@ document.body.addEventListener("keydown", (event)=> {
         handleNumbers(event);
     }
     if (event.key === "+" || event.key === "-" || event.key === "/" || event.key === "*") {
+        event.preventDefault();
         handleOperators(event);
     }
     if (event.key === "Enter") {
@@ -24,7 +25,7 @@ document.body.addEventListener("keydown", (event)=> {
     if (event.key.toLowerCase() === "c") {
         resetCalc();
     }})
-    
+
 for (let button of buttons) {
     button.addEventListener("click", (event) => {
         if (event.target.classList.contains("number")) {
