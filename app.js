@@ -66,6 +66,10 @@ function addDot() {
     } }
 
 function del() {
+    if (calculatorValue.total !== null) {
+        resetCalc();
+        return;
+    }
     input.textContent = input.textContent.slice(0, input.textContent.length -1); // delete display value
     if (calculatorValue.value2) {
         calculatorValue.value2 = calculatorValue.value2.slice(0, calculatorValue.value2.length-1); //delete from variable
